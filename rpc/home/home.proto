@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package home;
+option go_package="./home";
+
+message PingReq {
+  string ping = 1;
+}
+
+message PingResp {
+  string pong = 1;
+}
+
+service Home {
+  rpc Ping(PingReq) returns(PingResp);
+}

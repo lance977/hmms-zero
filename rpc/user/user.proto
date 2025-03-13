@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package user;
+option go_package="./user";
+
+// Ping 请求
+message PingReq {
+  string ping = 1;
+}
+
+// Ping 相应
+message PingResp {
+  string pong = 1;
+}
+
+//message SignInReq {
+//  int32 type = 1;
+//  string username = 2;
+//  string password = 3;
+//  string phone_number = 4;
+//  string code = 5;
+//}
+
+// 通过账户登录请求.
+message SignInByAccountReq {
+  // 用户名
+  string username = 1;
+  // 密码
+  string password = 2;
+}
+
+// 通过手机号登录.
+message SignInByPhoneReq {
+  // 手机号
+  string phone_number = 1;
+  // 验证码
+  string code = 2;
+}
+
+// 登录相应
+message SignInResp {
+  // token
+  string access_token = 1;
+  // token 类型
+  string token_type = 2;
+  // token 过期时间
+  int64 expires_in = 3;
+  // 刷新token
+  string refresh_token = 4;
+  // 范围
+  string scope = 5;
+}
+
+service User {
+  // ping
+  rpc Ping(PingReq) returns(PingResp);
+//  rpc SignIn(SignInReq) returns(SignInResp);
+  // 通过账号登录
+  rpc SingInByAccount(SignInByAccountReq) returns(SignInResp);
+  // 通过手机号登录
+  rpc SignInByPhone(SignInByPhoneReq) returns(SignInResp);
+}

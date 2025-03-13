@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package notification;
+option go_package="./notification";
+
+message PingReq {
+  string ping = 1;
+}
+
+message PingResp {
+  string pong = 1;
+}
+
+// 发送手机验证码请求
+message SendCodeByPhoneReq {
+  // 手机号
+  string phone_number = 1;
+  // 验证码
+  string code = 2;
+}
+
+// 发送手机号验证码响应
+message SendCodeByPhoneResp {
+  // 是否成功
+  bool success = 1;
+}
+
+service Notification {
+  rpc Ping(PingReq) returns(PingResp);
+  // 发送手机验证码
+  rpc SendCodeByPhone(SendCodeByPhoneReq) returns(SendCodeByPhoneResp);
+}
