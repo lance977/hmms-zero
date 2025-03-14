@@ -3,10 +3,10 @@ package logic
 import (
 	"context"
 
+	"github.com/zeromicro/go-zero/core/logx"
+
 	"github.com/lance977/hmms-zero/rpc/notification/internal/svc"
 	"github.com/lance977/hmms-zero/rpc/notification/notification"
-
-	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type PingLogic struct {
@@ -24,7 +24,5 @@ func NewPingLogic(ctx context.Context, svcCtx *svc.ServiceContext) *PingLogic {
 }
 
 func (l *PingLogic) Ping(in *notification.PingReq) (*notification.PingResp, error) {
-	// todo: add your logic here and delete this line
-
-	return &notification.PingResp{}, nil
+	return &notification.PingResp{Pong: "pong"}, nil
 }

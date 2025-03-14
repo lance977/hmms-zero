@@ -4,16 +4,16 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/lance977/hmms-zero/rpc/notification/internal/config"
-	"github.com/lance977/hmms-zero/rpc/notification/internal/server"
-	"github.com/lance977/hmms-zero/rpc/notification/internal/svc"
-	"github.com/lance977/hmms-zero/rpc/notification/notification"
-
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+
+	"github.com/lance977/hmms-zero/rpc/notification/internal/config"
+	"github.com/lance977/hmms-zero/rpc/notification/internal/server"
+	"github.com/lance977/hmms-zero/rpc/notification/internal/svc"
+	"github.com/lance977/hmms-zero/rpc/notification/notification"
 )
 
 var configFile = flag.String("f", "etc/notification.yaml", "the config file")
